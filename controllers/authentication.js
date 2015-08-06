@@ -36,9 +36,11 @@ var authenticationController = {
   },
 
   processSignup: function(req, res, next){
+    console.log(req.body)
     var user = new User({
-      username: req.body.username,
-      password: req.body.password,
+      username    : req.body.username,
+      password    : req.body.password,
+      displayName : req.body.displayName
     });
 
     user.save(function(err, user){

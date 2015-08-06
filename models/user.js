@@ -9,6 +9,9 @@ var userSchema = mongoose.Schema({
 		required: true,
 		unique: true
 	},
+	displayName: {
+		type: String,
+	},
 	password: {
 		type: String,
 		// required: true

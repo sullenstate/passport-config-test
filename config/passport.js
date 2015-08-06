@@ -45,9 +45,10 @@ var localStrategy = new LocalStrategy(function(username, password, done){
 passport.use(localStrategy);
 
 passport.use(new FacebookStrategy({
-    	clientID: configVars.facebookClientID,
-    	clientSecret: configVars.facebookClientSecret,
-    	callbackURL: "http://localhost:3000/auth/facebook/callback"
+    	clientID 	  : configVars.facebookClientID,
+    	clientSecret  : configVars.facebookClientSecret,
+    	callbackURL	  : "http://localhost:3000/auth/facebook/callback",
+    	profileFields : ['id', 'displayName', 'photos']
 	},
   
 	function(accessToken, refreshToken, profile, done) {
@@ -61,7 +62,11 @@ passport.use(new FacebookStrategy({
         		done(null, user);
     		}
       		else {
-				var newUser = new User({username: profile.id});
+				var newUser = new User({
+					username	: profile.id,
+					displayName : profile.displayName
+				});
+
         		newUser.save(function(err, saved){
           			console.log('save')
           			console.log(err)
@@ -79,7 +84,7 @@ passport.use(new GoogleStrategy({
 	},
 
 	function(accessToken, refreshToken, profile, done) {
-		console.log(profile.id);
+		console.log(profile);
     	User.findOne({ username: profile.id }, function(err, user) {
 
       		if (err) { return done(err); }
@@ -88,7 +93,11 @@ passport.use(new GoogleStrategy({
         		done(null, user);
       		}
       		else {
-        		var newUser = new User({username: profile.id});
+        		var newUser = new User({
+        			username: profile.id,
+        			displayName: profile.displayName
+        		});
+
         		newUser.save(function(err, saved) {
         			done(null, saved);
         		});

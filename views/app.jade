@@ -1,6 +1,11 @@
 extends layout
 
 block content
-	h1 "I Be Logged In!"
-	a.btn.btn-default.btn-lg.btn-theme(href="logout" type="button") Logout!
+	.centered
+		if user.displayName
+			h1 #{user.displayName} Be Logged In!
+		else
+			h1 #{user.username} Be Logged In!
+
+		a.btn.btn-default.btn-lg.btn-theme(href="logout" type="button") Logout!
 	
