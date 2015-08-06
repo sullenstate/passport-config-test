@@ -1,0 +1,6 @@
+{
+	"facebookClientID" 		: YOUR-FACEBOOK-CLIENTID-AS-STRING,
+	"facebookClientSecret" 	: YOUR-FACEBOOK-CLIENTSECRET-AS-STRING,
+	"googleClientID" 		: YOUR-GOOGLE-CLIENTID-AS-STRING,
+	"googleClientSecret"	: YOUR-GOOGLE-CLIENTSECRET-AS-STRING
+}
